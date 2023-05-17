@@ -4,9 +4,8 @@ import 'package:judicial_exams/models/examList.dart';
 class ExamListController extends GetxController{
 
   List<int> selectedIndexList = [];
-
-     List<ExamList> selectedExamList = [] ;
-    List<ExamList> examList =<ExamList>[
+  List<ExamList> selectedExamList = [] ;
+  List<ExamList> examList =<ExamList>[
       ExamList(
         examName: 'Exam Name',
         examSubtitle: 'This exam has a small subheading',
