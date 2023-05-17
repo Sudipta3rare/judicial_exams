@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/examList_controller.dart';
-import 'package:judicial_exams/views/components/list_tile.dart';
+import 'package:judicial_exams/views/components/examList_tile.dart';
 
 import '../../../utils/styles.dart';
 class ExamList extends StatelessWidget {
@@ -43,20 +43,24 @@ class ExamList extends StatelessWidget {
           ),),
       ),
       backgroundColor:AppStyle().backgroundColor,
-      body: SafeArea(
-        child: GetBuilder<ExamListController>(
+      body: _showBody(context),
+    );
+  }
+
+  Widget _showBody(BuildContext context){
+    return  SafeArea(
+      child: GetBuilder<ExamListController>(
           builder: (ctrl) {
             return ListView.builder(
-              padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(8),
                 itemCount:  ctrl.examList.length,
                 itemBuilder: (BuildContext context, int index) =>
-                ListItems(
-                    // exam: ctrl.examList[index],
-                    value: ctrl.examList[index].examSelected,
-                  index: index,
-));
+                    ListItems(
+                      // exam: ctrl.examList[index],
+                      value: ctrl.examList[index].examSelected,
+                      index: index,
+                    ));
           }
-        ),
       ),
     );
   }

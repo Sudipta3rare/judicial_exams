@@ -22,8 +22,8 @@ class _DashboardPageState extends State<DashboardPage> {
   List<Widget> _buildScreens() {
     return [
       ExamList(),
-      Account(),
       OngoingExams(),
+      Account(),
     ];
   }
 

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:judicial_exams/models/examList.dart';
+import 'package:judicial_exams/models/examList_model.dart';
 
 class ExamListController extends GetxController{
 
