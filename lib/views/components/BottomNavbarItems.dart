@@ -11,9 +11,28 @@ class BottomNavbarItems{
 
       PersistentBottomNavBarItem(
           title: 'Exam List'.tr,
-          icon: Icon(Icons.featured_play_list_sharp,
+          icon: Icon(Icons.format_list_bulleted,
             color: Colors.white,),
           inactiveIcon: Icon(Icons.featured_play_list_sharp,
+            color:AppStyle().primaryColor,
+            size: 22.0,),
+          //     icon: SvgPicture.asset('assets/icons/home_icon.svg',
+          // color: thCtrl.isDarkModeOn
+          //     ? AppColors.iconActiveColor
+          //     : AppColors.buttonColor),
+          // inactiveIcon: SvgPicture.asset('assets/icons/home_icon.svg',
+          //     color: thCtrl.isDarkModeOn
+          //         ? AppColors.iconInactiveColor
+          //         : AppColors.buttonColor),
+        activeColorPrimary: AppStyle().textHeading,
+          inactiveColorPrimary: AppStyle().primaryColor,
+         ),
+
+  PersistentBottomNavBarItem(
+          title: 'Ongoing Exams'.tr,
+          icon: Icon(Icons.star,
+            color: Colors.white,),
+          inactiveIcon: Icon(Icons.star_border,
             color:AppStyle().primaryColor,
             size: 22.0,),
           //     icon: SvgPicture.asset('assets/icons/home_icon.svg',

@@ -7,6 +7,7 @@ import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 import '../../controller/dashboard_controller.dart';
 import '../components/BottomNavbarItems.dart';
+import 'pages/ongoing_exams.dart';
 class DashboardPage extends StatefulWidget {
   const DashboardPage({Key? key}) : super(key: key);
 
@@ -20,9 +21,9 @@ class _DashboardPageState extends State<DashboardPage> {
 
   List<Widget> _buildScreens() {
     return [
-
-      Account(),
       ExamList(),
+      Account(),
+      OngoingExams(),
     ];
   }
 
@@ -73,7 +74,7 @@ class _DashboardPageState extends State<DashboardPage> {
                       ),
                       navBarStyle:
                       NavBarStyle
-                          .style8, // Choose the nav bar style with this property
+                          .style9, // Choose the nav bar style with this property
                     ),
                   );
                 }

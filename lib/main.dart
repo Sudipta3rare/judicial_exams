@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/controller/dashboard_controller.dart';
+import 'package:judicial_exams/controller/examList_controller.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/slider_pages/Slider1.dart';
 
 void main() {
 
   Get.put(DashboardController());
+  Get.put(ExamListController());
   runApp(const MyApp());
 }
 
