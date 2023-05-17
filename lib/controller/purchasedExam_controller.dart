@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:judicial_exams/models/purchasedList_model.dart';
 class PurchasedExamController extends GetxController{
+ static PurchasedExamController to = Get.find();
   List purchaseExamList  = <PurchasedExamList>[
     PurchasedExamList(
       examName: "Exam Name",

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:judicial_exams/models/examList_model.dart';
 
 class ExamListController extends GetxController{
+  static ExamListController to = Get.find();
+
 
   List<int> selectedIndexList = [];
 
