@@ -1,7 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
 
 
@@ -12,18 +14,39 @@ class MyLogin extends StatelessWidget {
   Widget build(BuildContext context) {
     String email = '', pass = '';
     return Scaffold(
-      body: Center(
+      backgroundColor: AppStyle().backgroundColor,
+      body: Container(
+        padding: EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/background.png"),
+              fit: BoxFit.cover,
+              opacity: 0.1
+          ),
+        ),
 
-        child: Container(
-          margin: EdgeInsets.only(left: 30, right: 30),
+        // margin: EdgeInsets.only(left: 30, right: 30),
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SvgPicture.asset(
+
+                    width: MediaQuery.of(context).size.width,
+                    height:400,
+                    "assets/login.svg"),
+              ),
+
               TextField(
                 onChanged: (value) {
                   email = value;
                 },
                 decoration: const InputDecoration(
+                  //fillColor: Color(0xFFEDEDED),
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Color(0xff3e1558)),
                   border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff3e1558)),
@@ -73,8 +96,7 @@ class MyLogin extends StatelessWidget {
                     }
                   }
                 },
-                child: Container(
-                    child: CustomButton().customButton200(context, 'Login')),
+                child: CustomButton().customButton200(context, 'Login'),
                 ),
 
               SizedBox(height: 20),
@@ -85,9 +107,9 @@ class MyLogin extends StatelessWidget {
                   Text("Does not have an account?"),
                   SizedBox(width: 5),
                   GestureDetector(
-                    onTap: () => Get.toNamed('register'),
+                    onTap: () => Get.offAndToNamed('register'),
                     child: const Text(
-                      "Sign in",
+                      "Sign Up",
                       style: TextStyle(
                         color: Color(0xff3e1558),
                         fontWeight: FontWeight.bold,
