@@ -6,6 +6,7 @@ import 'package:judicial_exams/controller/start_exam_controller.dart';
 import 'package:judicial_exams/models/purchasedList_model.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
+
 import 'package:pspdfkit_flutter/pspdfkit.dart';
 
 class StartExamPage extends StatelessWidget {
@@ -77,6 +78,7 @@ class StartExamPage extends StatelessWidget {
                         : () async {
                       var tempDir = await Pspdfkit.getTemporaryDirectory();
                       await Pspdfkit.present(tempDir.path + fileName);
+
                     },
                     child: CustomButton().customButton200(context, "Start Exam")),
               ),

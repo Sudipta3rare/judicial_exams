@@ -1,5 +1,4 @@
 import 'package:path_provider/path_provider.dart';
-import 'package:pspdfkit_flutter/pspdfkit.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'dart:io';
@@ -52,7 +51,27 @@ class StartExamController extends GetxController{
       }
       update();
   }
-  String getTemporaryDirectory(){
-    return "assets/pdfs/";
+
+
+  void onClose(){
+    _deleteCacheDir();
+    _deleteAppDir();
+  }
+
+
+  Future<void> _deleteCacheDir() async {
+    var tempDir = await getTemporaryDirectory();
+
+    if (tempDir.existsSync()) {
+      tempDir.deleteSync(recursive: true);
+    }
+  }
+
+  Future<void> _deleteAppDir() async {
+    var appDocDir = await getApplicationDocumentsDirectory();
+
+    if (appDocDir.existsSync()) {
+      appDocDir.deleteSync(recursive: true);
+    }
   }
 }
