@@ -8,11 +8,6 @@ class PaymentController extends GetxController{
   ExamListController exCtrl = ExamListController.to;
 late  List<ExamList>  selectedList = exCtrl.selectedExamList;
 
-    void onInit(){
-
-      print(selectedList.length);
-    }
-
 
     String totalAmount(){
       double totalAmount = 0.0;

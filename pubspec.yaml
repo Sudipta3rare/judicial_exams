@@ -40,6 +40,9 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   google_fonts: ^4.0.4
   flutter_svg: ^2.0.5
+  path_provider: ^2.0.15
+  dio: ^5.1.2
+  pspdfkit_flutter: ^3.6.0
 
 dev_dependencies:
   flutter_test:
