@@ -19,25 +19,31 @@ class ExamList extends StatelessWidget {
             backgroundColor: AppStyle().button,
             onPressed: (){
               ctrl.onPurchaseClicked();
-              Get.snackbar("Purchase Order: ", ctrl.selectedExamList.isNotEmpty ? "${ctrl.selectedExamList.length} items Selected" : "Please select items for purchase",
-                colorText: Colors.white,
-                  titleText: Text("Purchase Order:", style: GoogleFonts.montserrat(
-                    color: Colors.white,
-                  ),),
-                  messageText: Text(ctrl.selectedExamList.isNotEmpty ? "${ctrl.selectedExamList.length} items Selected" : "Please select items for purchase", style: GoogleFonts.montserrat(
-                    color: Colors.white,
-                  ),),
-                  snackPosition: SnackPosition.BOTTOM,
-                  backgroundColor: AppStyle().button,
-                overlayColor: AppStyle().button,
-                  barBlur: 10
-              );
-              if(ctrl.selectedExamList.isNotEmpty)
-              Get.to(()=>PaymentPage());
+              if(ctrl.selectedExamList.isEmpty){
+                Get.snackbar("Purchase Order: ", "Please select items for purchase",
+                    colorText: Colors.white,
+                    titleText: Text("Purchase Order:", style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                    ),),
+                    messageText: Text( "Please select items for purchase", style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                    ),),
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: AppStyle().button,
+                    overlayColor: AppStyle().button,
+                    barBlur: 10
+                );
+              }
+
+              if(ctrl.selectedExamList.isNotEmpty){
+                Get.to(()=>PaymentPage());
+              }
+
 
             }, label: Text("Purchase", style: GoogleFonts.montserrat(
             fontWeight: FontWeight.bold
-          ),),
+          ),
+          ),
           );
         }
       ),
