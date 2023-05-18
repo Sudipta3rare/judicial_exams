@@ -37,16 +37,16 @@ class CustomButton{
       ),
     );
   }
-  Widget customButtonWhiteS(context, String title){
+  Widget customButtonSmall(context, String title){
     return Container(
       // height: 50,
-      // width: 100,
-      margin: EdgeInsets.all(2),
+      width: MediaQuery.of(context).size.width/2,
+      margin: EdgeInsets.fromLTRB(2,3,2,3),
       padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(10),
         // color: const Color.fromARGB(255, 112, 91, 222),
-        color: Colors.white,
+        color: AppStyle().button,
         // gradient: const LinearGradient(colors: [
         //   Colors.blueAccent,
         //   Colors.lightBlueAccent
@@ -58,11 +58,9 @@ class CustomButton{
           '$title',
           style:
           GoogleFonts.montserrat(
-            color: Colors.blue[900],
+            color: AppStyle().textHeading,
             fontWeight: FontWeight.w600,
-            fontSize: 12,
-
-
+            fontSize: 14,
           ),
           textAlign: TextAlign.center,
         ),

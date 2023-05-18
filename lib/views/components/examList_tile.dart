@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/examList_controller.dart';
 import 'package:judicial_exams/utils/styles.dart';
 
-import '../../models/examList.dart';
+import '../../models/examList_model.dart';
 class ListItems extends StatelessWidget {
   const ListItems({
     Key? key,
@@ -60,7 +60,7 @@ class ListItems extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: ListSubItem(listCtrl.examList[index].examDate.toString(),
-                      "Exam Date",
+                      "Exam Date:",
 
                     ),
 
@@ -85,7 +85,7 @@ class ListItems extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 2,
-                    child: ListSubItem(  listCtrl.examList[index].examPrice,  listCtrl.examList[index].examStatus),
+                    child: ListSubItem("\u{20B9} ${listCtrl.examList[index].examPrice}",  listCtrl.examList[index].examStatus),
 
                   ),
                   Expanded(
@@ -121,7 +121,8 @@ class ListSubItem extends StatelessWidget {
               child: Text(
                 heading,
                 style: GoogleFonts.montserrat(
-                  fontSize: 16
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600
                 ),
                 overflow: TextOverflow.clip,
               ),

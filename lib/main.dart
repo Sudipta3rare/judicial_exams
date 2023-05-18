@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/controller/dashboard_controller.dart';
 import 'package:judicial_exams/controller/examList_controller.dart';
+import 'package:judicial_exams/controller/payment_controller.dart';
+import 'package:judicial_exams/controller/purchasedExam_controller.dart';
+import 'package:judicial_exams/controller/start_exam_controller.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/slider_pages/Slider1.dart';
 
 void main() {
 
   Get.put(DashboardController());
-  Get.put(ExamListController());
+  Get.lazyPut<ExamListController>(()=>ExamListController());
+  Get.lazyPut(() => PurchasedExamController());
+  Get.lazyPut<PaymentController>(() => PaymentController(), fenix: true);
+  Get.lazyPut<StartExamController>(() => StartExamController(), fenix: true);
   runApp(const MyApp());
 }
 

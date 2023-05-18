@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/examList_controller.dart';
-import 'package:judicial_exams/views/components/list_tile.dart';
+import 'package:judicial_exams/views/components/examList_tile.dart';
+import 'package:judicial_exams/views/payment/payment_page.dart';
 
 import '../../../utils/styles.dart';
 class ExamList extends StatelessWidget {
@@ -18,20 +19,31 @@ class ExamList extends StatelessWidget {
             backgroundColor: AppStyle().button,
             onPressed: (){
               ctrl.onPurchaseClicked();
-              Get.snackbar("Purchase Order: ", ctrl.selectedExamList.isNotEmpty ? "${ctrl.selectedExamList.length} items Selected" : "Please select items for purchase",
-                colorText: Colors.white,
-                  titleText: Text("Purchase Order:", style: GoogleFonts.montserrat(
-                    color: Colors.white,
-                  ),),
-                  messageText: Text(ctrl.selectedExamList.isNotEmpty ? "${ctrl.selectedExamList.length} items Selected" : "Please select items for purchase", style: GoogleFonts.montserrat(
-                    color: Colors.white,
-                  ),),
-                  snackPosition: SnackPosition.BOTTOM,
-                  backgroundColor: AppStyle().button,
-                overlayColor: AppStyle().button,
-                  barBlur: 10
-              );
-            }, label: Text("Purchase"),
+              if(ctrl.selectedExamList.isEmpty){
+                Get.snackbar("Purchase Order: ", "Please select items for purchase",
+                    colorText: Colors.white,
+                    titleText: Text("Purchase Order:", style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                    ),),
+                    messageText: Text( "Please select items for purchase", style: GoogleFonts.montserrat(
+                      color: Colors.white,
+                    ),),
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: AppStyle().button,
+                    overlayColor: AppStyle().button,
+                    barBlur: 10
+                );
+              }
+
+              if(ctrl.selectedExamList.isNotEmpty){
+                Get.to(()=>PaymentPage());
+              }
+
+
+            }, label: Text("Purchase", style: GoogleFonts.montserrat(
+            fontWeight: FontWeight.bold
+          ),
+          ),
           );
         }
       ),
@@ -43,20 +55,25 @@ class ExamList extends StatelessWidget {
           ),),
       ),
       backgroundColor:AppStyle().backgroundColor,
-      body: SafeArea(
-        child: GetBuilder<ExamListController>(
+      body: _showBody(context),
+    );
+  }
+
+  Widget _showBody(BuildContext context){
+    return  SafeArea(
+      child: GetBuilder<ExamListController>(
           builder: (ctrl) {
             return ListView.builder(
-              padding: EdgeInsets.all(8),
+
+                padding: EdgeInsets.all(8),
                 itemCount:  ctrl.examList.length,
                 itemBuilder: (BuildContext context, int index) =>
-                ListItems(
-                    // exam: ctrl.examList[index],
-                    value: ctrl.examList[index].examSelected,
-                  index: index,
-));
+                    ListItems(
+                      // exam: ctrl.examList[index],
+                      value: ctrl.examList[index].examSelected,
+                      index: index,
+                    ));
           }
-        ),
       ),
     );
   }
