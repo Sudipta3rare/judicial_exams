@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:judicial_exams/login.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
-import 'package:judicial_exams/views/dashboard_page/dashboard.dart';
-
 import '../../utils/styles.dart';
+
+
 class SliderComponent{
   Widget textPara(BuildContext context,String title) {
     return Padding(
@@ -168,7 +169,7 @@ class Slider1 extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return DashboardPage();
+                              return MyLogin();
                             })),
 
                       child: CustomButton().customButton200(context, "Get Started"))
