@@ -6,8 +6,11 @@ import 'package:judicial_exams/controller/start_exam_controller.dart';
 import 'package:judicial_exams/models/purchasedList_model.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
+import 'package:path_provider/path_provider.dart';
+// import 'package:pspdfkit_flutter/pspdfkit.dart';
 
-import 'package:pspdfkit_flutter/pspdfkit.dart';
+
+import '../pdf_view.dart';
 
 class StartExamPage extends StatelessWidget {
   StartExamPage(
@@ -58,7 +61,7 @@ class StartExamPage extends StatelessWidget {
                     onTap: ctrl.didDownloadPDF
         ? null
             : () async {
-        var tempDir = await Pspdfkit.getTemporaryDirectory();
+        var tempDir = await getTemporaryDirectory();
         ctrl.download(Dio(), imageUrl, tempDir.path + fileName);
         },
                     child: CustomButton().customButtonSmall(context, "Download Test Pdf")),
@@ -76,9 +79,47 @@ class StartExamPage extends StatelessWidget {
                     onTap: !ctrl.didDownloadPDF
                         ? null
                         : () async {
-                      var tempDir = await Pspdfkit.getTemporaryDirectory();
-                      await Pspdfkit.present(tempDir.path + fileName);
+                      var tempDir = await getTemporaryDirectory();
+                      // await Pspdfkit.present(tempDir.path + fileName);
+                        Get.dialog(
+                          AlertDialog(
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                            // contentPadding: EdgeInsets.only(top: 10.0),
+                            backgroundColor: AppStyle().textHeading,
+                            actions: [
+                              IconButton(onPressed: (){Get.back();}, icon: Icon(Icons.cancel,color: AppStyle().button,))
+                            ],
+                            content: Container(
 
+                              height: 200,
+                              width: MediaQuery.of(context).size.width ,
+                              padding: EdgeInsets.all(8),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: [
+                                  Text("TEST IS ABOUT TO START !", style: GoogleFonts.montserrat(
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold
+                                  ),textAlign: TextAlign.center,),
+                                  SizedBox(height: 15,),
+
+                                  Text("Start exam ${examDetials.examName} for ${examDetials.examDuration} hrs", style: AppStyle().sliderPara, ),
+                                  SizedBox(height: 15,),
+
+                                  GestureDetector(child: CustomButton().customButtonSmall(context, 'Start Exam'),
+                                  onTap: () => Get.offAll(PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(),
+                                  ),
+                                  ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        );
+                        // Get.offAll(PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(),));
+                   ctrl.startTimer(int.parse(examDetials.examDuration)*60*60);
                     },
                     child: CustomButton().customButton200(context, "Start Exam")),
               ),
@@ -121,7 +162,7 @@ class StartExamPage extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(' ${examDetials.examDuration}', style: GoogleFonts.montserrat(
+                      child: Text(' ${examDetials.examDuration} hr', style: GoogleFonts.montserrat(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
                           color: AppStyle().secondaryColor

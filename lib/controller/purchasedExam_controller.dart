@@ -6,14 +6,14 @@ class PurchasedExamController extends GetxController{
     PurchasedExamList(
       examName: "Exam Name",
       examStatus: 'Pending',
-      examDuration: '3hrs',
+      examDuration: '3',
       examDate: "30/10/2023",
       examTitle: 'An exam title for the exams'
     ),
     PurchasedExamList(
       examName: "Exam Name",
       examStatus: 'Pending',
-      examDuration: '3hrs',
+      examDuration: '3',
       examDate: "30/10/2023",
       examTitle: 'An exam title for the exams'
     ),

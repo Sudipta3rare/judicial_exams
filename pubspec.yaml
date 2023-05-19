@@ -42,7 +42,8 @@ dependencies:
   flutter_svg: ^2.0.5
   path_provider: ^2.0.15
   dio: ^5.1.2
-  pspdfkit_flutter: ^3.6.0
+  flutter_pdfview: ^1.3.1
+#  pspdfkit_flutter: ^3.6.0
   firebase_auth: ^4.6.1
   modal_progress_hud_nsn: ^0.4.0
   firebase_core: ^2.13.0
