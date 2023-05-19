@@ -61,6 +61,9 @@ class MyLogin extends StatelessWidget {
               SizedBox(height: 20),
 
               TextField(
+                obscureText: true,
+                enableSuggestions: false,
+                autocorrect: false,
                 onChanged: (value) {
                   pass = value;
                 },
@@ -84,11 +87,19 @@ class MyLogin extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   try {
-                    await Firebase.initializeApp(); // Ensure Firebase is initialized
+                    await Firebase.initializeApp();
                     FirebaseAuth auth = FirebaseAuth.instance;
                     UserCredential userCredential = await auth.signInWithEmailAndPassword(
                       email: email,
                       password: pass,
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: Color(0xffc89ce4),
+                        content: Text('Login Successful'),
+                        duration: const Duration(seconds: 2),
+                      ),
                     );
                     Navigator.pushNamed(context, 'home');
                   } on FirebaseAuthException catch (e) {

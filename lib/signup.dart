@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
@@ -110,6 +109,9 @@ class MyRegister extends StatelessWidget {
                 SizedBox(height: 20),
 
                 TextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
                   onChanged: (value) {
                     pass = value;
                   },
@@ -132,6 +134,9 @@ class MyRegister extends StatelessWidget {
 
 
                 TextField(
+                  obscureText: true,
+                  enableSuggestions: false,
+                  autocorrect: false,
                   onChanged: (value) {
                     confirmPassword = value;
                   },
@@ -158,6 +163,8 @@ class MyRegister extends StatelessWidget {
                     if (fullname.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
                           content: Text('Please enter a valid full name.'),
                           duration: const Duration(seconds: 2),
                         ),
@@ -168,6 +175,8 @@ class MyRegister extends StatelessWidget {
                     if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(email)) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
                           content: Text('Please enter a valid email.'),
                           duration: const Duration(seconds: 2),
                         ),
@@ -177,6 +186,8 @@ class MyRegister extends StatelessWidget {
                     if (phone.length != 10) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
                           content: Text('Please enter a valid phone number.'),
                           duration: const Duration(seconds: 2),
                         ),
@@ -187,6 +198,8 @@ class MyRegister extends StatelessWidget {
                     if (pass.length < 6) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
                           content: Text('Password should be at least 6 characters long.'),
                           duration: const Duration(seconds: 2),
                         ),
@@ -197,6 +210,8 @@ class MyRegister extends StatelessWidget {
                     if (pass != confirmPassword) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
                           content: Text('Passwords do not match.'),
                           duration: const Duration(seconds: 2),
                         ),
@@ -209,6 +224,14 @@ class MyRegister extends StatelessWidget {
                       UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                         email: email,
                         password: pass,
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
+                          content: Text('Registration Successful'),
+                          duration: const Duration(seconds: 2),
+                        ),
                       );
                       Navigator.pushNamed(context, 'home');
                     } on FirebaseAuthException catch (e) {
