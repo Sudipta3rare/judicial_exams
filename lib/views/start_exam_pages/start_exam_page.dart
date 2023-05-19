@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/start_exam_controller.dart';
+import 'package:judicial_exams/controller/timer_controller.dart';
 import 'package:judicial_exams/models/purchasedList_model.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
@@ -108,18 +109,28 @@ class StartExamPage extends StatelessWidget {
                                   Text("Start exam ${examDetials.examName} for ${examDetials.examDuration} hrs", style: AppStyle().sliderPara, ),
                                   SizedBox(height: 15,),
 
-                                  GestureDetector(child: CustomButton().customButtonSmall(context, 'Start Exam'),
-                                  onTap: () => Get.offAll(PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(),
+                                  GetBuilder<TimerController>(
+                                    builder: (tmCtrl) {
+                                      return GestureDetector(child: CustomButton().customButtonSmall(context, 'Start Exam'),
+                                      onTap: (){
+                                        tmCtrl.goPdfView( int.parse(examDetials.examDuration)*60*60, tempDir.path+fileName, examDetials.examName);
+                                        // ctrl.startTimer(int.parse(examDetials.examDuration)*60*60);
+                                        // Get.offAll(PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(), examTime: int.parse(examDetials.examDuration)*60*60,));
+                                        // Get.to(()=>PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(), examTime: int.parse(examDetials.examDuration)*60*60,));
+
+                                      }
+                                      );
+                                    }
                                   ),
-                                  ),
-                                  )
+
+
                                 ],
                               ),
                             ),
                           )
                         );
                         // Get.offAll(PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(),));
-                   ctrl.startTimer(int.parse(examDetials.examDuration)*60*60);
+
                     },
                     child: CustomButton().customButton200(context, "Start Exam")),
               ),

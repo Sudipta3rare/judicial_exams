@@ -8,9 +8,9 @@ import 'dart:io';
 class StartExamController extends GetxController{
   static StartExamController to = Get.find();
 
-  Timer? _timer;
-  int remainSeconds = 1;
-  final time = '00.00'.obs;
+  // Timer? _timer;
+  // int remainSeconds = 1;
+  // final time = '00.00'.obs;
 
 
   double progress = 0;
@@ -58,34 +58,34 @@ class StartExamController extends GetxController{
       }
       update();
   }
- void startTimer(int seconds){
-    const duration = Duration(seconds: 2);
-    remainSeconds = seconds;
-    _timer = Timer.periodic(duration, (Timer timer) {
-      if(remainSeconds==0){
-        timer.cancel();
-      }else{
-        int hours = remainSeconds~/120;
-        int minutes = remainSeconds~/60;
-        int seconds = remainSeconds%60;
-        time.value = minutes.toString().padLeft(3, "0")+":"+seconds.toString().padLeft(2, "0");
-        remainSeconds--;
-      }
-    });
-  }
+ // void startTimer(int seconds){
+ //    const duration = Duration(seconds: 1);
+ //    remainSeconds = seconds;
+ //    _timer = Timer.periodic(duration, (Timer timer) {
+ //      if(remainSeconds==0){
+ //        timer.cancel();
+ //      }else{
+ //        int hours = remainSeconds~/120;
+ //        int minutes = remainSeconds~/60;
+ //        int seconds = remainSeconds%60;
+ //        time.value = minutes.toString().padLeft(3, "0")+":"+seconds.toString().padLeft(2, "0");
+ //        remainSeconds--;
+ //      }
+ //    });
+ //  }
 
-  @override
-  void onReady(){
-    // _startTimer(900);
-    super.onReady();
-  }
+  // @override
+  // void onReady(){
+  //   // _startTimer(900);
+  //   super.onReady();
+  // }
 
   void onClose(){
     _deleteCacheDir();
     _deleteAppDir();
-    if(_timer!=null){
-      _timer!.cancel();
-    }
+    // if(_timer!=null){
+    //   _timer!.cancel();
+    // }
     super.onClose();
   }
 

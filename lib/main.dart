@@ -5,7 +5,8 @@ import 'package:judicial_exams/controller/examList_controller.dart';
 import 'package:judicial_exams/controller/payment_controller.dart';
 import 'package:judicial_exams/controller/purchasedExam_controller.dart';
 import 'package:judicial_exams/controller/start_exam_controller.dart';
-import 'package:judicial_exams/utils/styles.dart';
+import 'package:judicial_exams/controller/timer_controller.dart';
+
 import 'package:judicial_exams/views/slider_pages/Slider1.dart';
 
 void main() {
@@ -15,6 +16,8 @@ void main() {
   Get.lazyPut(() => PurchasedExamController());
   Get.lazyPut<PaymentController>(() => PaymentController(), fenix: true);
   Get.lazyPut<StartExamController>(() => StartExamController(), fenix: true);
+  // Get.lazyPut<TimerController>(() => TimerController(), fenix: true);
+  Get.put(TimerController());
   runApp(const MyApp());
 }
 
@@ -26,7 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialRoute: '/',
-      title: 'Flutter Demo',
+      title: 'Judicial Exam',
       debugShowCheckedModeBanner: false,
 
      home: Slider1(),
