@@ -14,9 +14,10 @@ class MyRegister extends StatelessWidget {
   Widget build(BuildContext context) {
     String email = '', pass = '';
     return Scaffold(
-      backgroundColor: AppStyle().backgroundColor,
+     // backgroundColor: AppStyle().backgroundColor,
       body: Container(
-        padding: EdgeInsets.fromLTRB(16,0,16,16),
+        height: double.infinity,
+        padding: EdgeInsets.fromLTRB(32,0,32,0),
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/background.png"),
@@ -29,14 +30,54 @@ class MyRegister extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
 
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SvgPicture.asset(
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: SvgPicture.asset(
+              //
+              //       width: MediaQuery.of(context).size.width,
+              //       height:400,
+              //       "assets/signUp.svg"),
+              // ),
 
-                    width: MediaQuery.of(context).size.width,
-                    height:400,
-                    "assets/signUp.svg"),
+              SizedBox(height: 150),
+
+              TextField(
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Full Name',
+                  labelStyle: TextStyle(color: Color(0xff3e1558)),
+                  border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff3e1558)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                  ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
+                ),
               ),
+
+              SizedBox(height: 20),
+
+              TextField(
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Phone',
+                  labelStyle: TextStyle(color: Color(0xff3e1558)),
+                  border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff3e1558)),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                  ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
+                ),
+              ),
+
+              SizedBox(height: 20),
 
               TextField(
                 onChanged: (value) {
@@ -50,6 +91,8 @@ class MyRegister extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
                   ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
                 ),
               ),
 
@@ -68,11 +111,36 @@ class MyRegister extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
                   ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
                 ),
               ),
 
 
               SizedBox(height: 20),
+
+
+              TextField(
+                onChanged: (value) {
+                  pass = value;
+                },
+                decoration: const InputDecoration(
+                  labelText: 'Confirm Password',
+                  labelStyle: TextStyle(color: Color(0xff3e1558)), // Change label text color to red
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff3e1558)), // Change border color to red
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                  ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
+                ),
+              ),
+
+
+              SizedBox(height: 40),
+
               GestureDetector(
                 onTap: () async {
                   try {

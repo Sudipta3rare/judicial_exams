@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/controller/dashboard_controller.dart';
 import 'package:judicial_exams/controller/examList_controller.dart';
-import 'package:judicial_exams/register.dart';
+import 'package:judicial_exams/signup.dart';
 import 'package:judicial_exams/views/dashboard_page/dashboard.dart';
 import 'package:judicial_exams/views/slider_pages/Slider1.dart';
 import 'login.dart';

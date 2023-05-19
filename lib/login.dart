@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
 
 
@@ -13,10 +12,10 @@ class MyLogin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String email = '', pass = '';
-    return Scaffold(
-      backgroundColor: AppStyle().backgroundColor,
+      return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(16),
+        height: double.infinity,
+        padding: EdgeInsets.fromLTRB(32,0,32,0),
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage("assets/background.png"),
@@ -54,6 +53,8 @@ class MyLogin extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
                   ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
                 ),
               ),
 
@@ -72,11 +73,13 @@ class MyLogin extends StatelessWidget {
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
                   ),
+                  fillColor: Colors.white,  // Set the background color to white
+                  filled: true,
                 ),
               ),
 
 
-              SizedBox(height: 20),
+              SizedBox(height: 40),
 
               GestureDetector(
                 onTap: () async {
