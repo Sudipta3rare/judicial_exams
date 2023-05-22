@@ -5,8 +5,9 @@ import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/start_exam_controller.dart';
 import 'package:judicial_exams/utils/styles.dart';
+import 'package:judicial_exams/views/start_exam_pages/submit_exam_page.dart';
 
-import '../controller/timer_controller.dart';
+import '../../controller/timer_controller.dart';
 
 
 
@@ -42,6 +43,9 @@ class PdfViewPage extends StatelessWidget {
       body: Container(
         child: GetBuilder<TimerController>(
           builder: (ctrl) {
+            ctrl.onFinish =(){
+              Get.offAll(SubmitExamPage());
+            };
             return Stack(
                   children: [
                     Padding(
@@ -101,7 +105,7 @@ class PdfViewPage extends StatelessWidget {
                         color: AppStyle().primaryColor,
                         child: Obx(
                                 ()=>Center(
-                              child: Text('${ctrl.time.value} m:s', style: GoogleFonts.montserrat(
+                              child: Text('${ctrl.time.value}', style: GoogleFonts.montserrat(
                                 fontSize: 30,
                                 color: AppStyle().textHeading
                               ),

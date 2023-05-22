@@ -87,7 +87,7 @@ class PurchasedListItem extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 1,
-                    child:ListSubItem(listCtrl.purchaseExamList[index].examDuration,"Exam Time:",
+                    child:ListSubItem("${listCtrl.purchaseExamList[index].examDuration} hrs","Exam Time:",
                     ),
                   ),
                 ],
@@ -124,10 +124,8 @@ class ListSubItem extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Text(
                   heading,
-                  style: GoogleFonts.montserrat(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600
-                  ),
+
+                  style: AppStyle().subheadingBlack,
                   overflow: TextOverflow.clip,
                   maxLines: 2,
                 ),
@@ -137,7 +135,7 @@ class ListSubItem extends StatelessWidget {
                 child: Text(
                   itemValue,
                   style: GoogleFonts.montserrat(
-                      fontSize: 14
+                      fontSize: 12
                   ),
                   // overflow: TextOverflow.clip,
                 ),

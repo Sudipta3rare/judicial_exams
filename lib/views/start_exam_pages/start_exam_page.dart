@@ -11,7 +11,7 @@ import 'package:path_provider/path_provider.dart';
 // import 'package:pspdfkit_flutter/pspdfkit.dart';
 
 
-import '../pdf_view.dart';
+import 'pdf_view.dart';
 
 class StartExamPage extends StatelessWidget {
   StartExamPage(
@@ -113,7 +113,7 @@ class StartExamPage extends StatelessWidget {
                                     builder: (tmCtrl) {
                                       return GestureDetector(child: CustomButton().customButtonSmall(context, 'Start Exam'),
                                       onTap: (){
-                                        tmCtrl.goPdfView( int.parse(examDetials.examDuration)*60*60, tempDir.path+fileName, examDetials.examName);
+                                        tmCtrl.goPdfView( double.parse(examDetials.examDuration)*60*60, tempDir.path+fileName, examDetials.examName);
                                         // ctrl.startTimer(int.parse(examDetials.examDuration)*60*60);
                                         // Get.offAll(PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(), examTime: int.parse(examDetials.examDuration)*60*60,));
                                         // Get.to(()=>PdfViewPage(path: tempDir.path+fileName, examName:   examDetials.examName.toString(), examTime: int.parse(examDetials.examDuration)*60*60,));

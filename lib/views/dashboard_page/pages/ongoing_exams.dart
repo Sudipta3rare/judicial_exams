@@ -6,7 +6,8 @@ import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/purchased_list_component.dart';
 
 class OngoingExams extends StatelessWidget {
-  const OngoingExams({Key? key}) : super(key: key);
+   OngoingExams({Key? key}) : super(key: key);
+ final PurchasedExamController ctrl = Get.put<PurchasedExamController>(PurchasedExamController()) ;
 
   @override
   Widget build(BuildContext context) {
