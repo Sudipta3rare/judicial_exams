@@ -88,8 +88,7 @@ class MyLogin extends StatelessWidget {
                 onTap: () async {
                   try {
                     await Firebase.initializeApp();
-                    FirebaseAuth auth = FirebaseAuth.instance;
-                    UserCredential userCredential = await auth.signInWithEmailAndPassword(
+                    UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
                       email: email,
                       password: pass,
                     );

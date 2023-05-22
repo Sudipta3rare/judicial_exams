@@ -12,15 +12,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  Get.put<DashboardController>(DashboardController());
-  Get.put<ExamListController>(ExamListController());
+
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: 'first',
     routes: {
       'first': (context) => Slider1(),
-      'register': (context) => MyRegister(),
       'login': (context) => MyLogin(),
+      'register': (context) => MyRegister(),
       'home': (context) => DashboardPage(),
     },
   ));

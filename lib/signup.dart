@@ -240,8 +240,6 @@ class MyRegister extends StatelessWidget {
                       } else if (e.code == 'email-already-in-use') {
                         print('The account already exists for that email.');
                       }
-                    } catch (e) {
-                      print(e);
                     }
                   },
                   child: CustomButton().customButton200(context, 'Sign Up'),
