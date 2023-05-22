@@ -7,11 +7,13 @@ import 'package:judicial_exams/views/components/custom_button.dart';
 
 
 class MyLogin extends StatelessWidget {
-  const MyLogin({Key? key}) : super(key: key);
+  MyLogin({Key? key}) : super(key: key);
+
+  String email = '', pass = '';
 
   @override
   Widget build(BuildContext context) {
-    String email = '', pass = '';
+
       return Scaffold(
       body: Container(
         height: double.infinity,
@@ -103,9 +105,23 @@ class MyLogin extends StatelessWidget {
                     Navigator.pushNamed(context, 'home');
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
-                      print('No user found for that email.');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
+                          content: Text('No user found for that email.'),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
                     } else if (e.code == 'wrong-password') {
-                      print('Wrong password provided for that user.');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          behavior: SnackBarBehavior.floating,
+                          backgroundColor: Color(0xffc89ce4),
+                          content: Text('Wrong password provided for that user.'),
+                          duration: const Duration(seconds: 2),
+                        ),
+                      );
                     }
                   }
                 },

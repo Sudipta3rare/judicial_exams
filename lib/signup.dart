@@ -8,11 +8,14 @@ import 'package:get/get.dart';
 
 
 class MyRegister extends StatelessWidget {
-  const MyRegister({Key? key}) : super(key: key);
+
+  MyRegister({Key? key}) : super(key: key);
+
+  String email = '', pass = '',phone = '',confirmPassword ='',fullname = '';
 
   @override
   Widget build(BuildContext context) {
-    String email = '', pass = '',phone = '',confirmPassword ='',fullname = '';
+
     return Scaffold(
      // backgroundColor: AppStyle().backgroundColor,
       body: SafeArea(
