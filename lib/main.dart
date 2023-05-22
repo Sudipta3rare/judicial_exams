@@ -12,6 +12,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  Get.put(DashboardController());
+  Get.put(ExamListController());
+
 
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
