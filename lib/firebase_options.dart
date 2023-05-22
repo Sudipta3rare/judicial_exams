@@ -17,24 +17,18 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
+        return ios;
+      case TargetPlatform.macOS:
         throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
+          'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
-      case TargetPlatform.macOS:
-        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,13 +46,31 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCz9pJVGsGnwSrthz2URsw1xqM_OTpL2Cw',
-    appId: '1:11880465011:ios:f816ba77cb549871992006',
-    messagingSenderId: '11880465011',
-    projectId: 'judicial-exams',
-    storageBucket: 'judicial-exams.appspot.com',
-    iosClientId: '11880465011-vbjle1skcjtbgj93sqeg5igdap4lr675.apps.googleusercontent.com',
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDQNlJreW4BxtAQVILynhPVO1pqQVdjZoE',
+    appId: '1:859120122536:web:1a28905caf3395601ea09d',
+    messagingSenderId: '859120122536',
+    projectId: 'judicial-exam-ac97d',
+    authDomain: 'judicial-exam-ac97d.firebaseapp.com',
+    storageBucket: 'judicial-exam-ac97d.appspot.com',
+    measurementId: 'G-LXL6XKRKET',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyAYpvULt8tCRxUkhVq7siEchO7aZP2krqw',
+    appId: '1:859120122536:android:3af66011a71410f01ea09d',
+    messagingSenderId: '859120122536',
+    projectId: 'judicial-exam-ac97d',
+    storageBucket: 'judicial-exam-ac97d.appspot.com',
+  );
+
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyA7pDG071LWZMuU6bpmC2x95S2NGfOlyts',
+    appId: '1:859120122536:ios:2aeb2a643992425e1ea09d',
+    messagingSenderId: '859120122536',
+    projectId: 'judicial-exam-ac97d',
+    storageBucket: 'judicial-exam-ac97d.appspot.com',
+    iosClientId: '859120122536-7qkkcpgjn77u4hgb6g3v22kmgl3fq81v.apps.googleusercontent.com',
     iosBundleId: 'com.example.judicialExams',
   );
 }

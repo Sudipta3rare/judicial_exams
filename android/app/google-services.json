@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "859120122536",
+    "project_id": "judicial-exam-ac97d",
+    "storage_bucket": "judicial-exam-ac97d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859120122536:android:3af66011a71410f01ea09d",
+        "android_client_info": {
+          "package_name": "com.example.judicial_exams"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859120122536-0e3r2u4le9q6pdvgbjf03hpfs582bhq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAYpvULt8tCRxUkhVq7siEchO7aZP2krqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859120122536-0e3r2u4le9q6pdvgbjf03hpfs582bhq8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "859120122536-7qkkcpgjn77u4hgb6g3v22kmgl3fq81v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.judicialExams"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
