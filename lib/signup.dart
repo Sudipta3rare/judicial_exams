@@ -236,7 +236,7 @@ class MyRegister extends StatelessWidget {
                           duration: const Duration(seconds: 2),
                         ),
                       );
-                      Navigator.pushNamed(context, 'home');
+                      Get.offAndToNamed("home");
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         print('The password provided is too weak.');
