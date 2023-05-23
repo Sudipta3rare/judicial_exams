@@ -88,6 +88,30 @@ class MyLogin extends StatelessWidget {
 
               GestureDetector(
                 onTap: () async {
+
+                  if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(email)) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: Color(0xffc89ce4),
+                        content: Text('Please enter a valid email.'),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                  }
+
+                  if (pass.length == 0) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        behavior: SnackBarBehavior.floating,
+                        backgroundColor: Color(0xffc89ce4),
+                        content: Text('Password field can not empty'),
+                        duration: const Duration(seconds: 2),
+                      ),
+                    );
+                    return;
+                  }
+
                   try {
                     await Firebase.initializeApp();
                     UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -102,7 +126,8 @@ class MyLogin extends StatelessWidget {
                         duration: const Duration(seconds: 2),
                       ),
                     );
-                    Navigator.pushNamed(context, 'home');
+                    //Navigator.pushNamed(context, 'home');
+                    Get.offAndToNamed("home");
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
                       ScaffoldMessenger.of(context).showSnackBar(
