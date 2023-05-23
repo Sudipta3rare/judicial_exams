@@ -37,6 +37,37 @@ class CustomButton{
       ),
     );
   }
+
+  Widget customButtonMedium(context, String title){
+    return Container(
+      width: MediaQuery.of(context).size.width/2,
+      margin: EdgeInsets.fromLTRB(2,3,2,3),
+      padding: const EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        // color: const Color.fromARGB(255, 112, 91, 222),
+        color: AppStyle().button,
+        // gradient: const LinearGradient(colors: [
+        //   Colors.blueAccent,
+        //   Colors.lightBlueAccent
+        // ]
+        // )
+      ),
+      child: Center(
+        child: Text(
+          '$title',
+          style:
+          GoogleFonts.montserrat(
+            color: AppStyle().textHeading,
+            fontWeight: FontWeight.w600,
+            fontSize: 14,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
   Widget customButtonSmall(context, String title){
     return Container(
       // height: 50,

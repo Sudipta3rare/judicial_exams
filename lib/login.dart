@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:judicial_exams/password_reset.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
 
 
@@ -153,7 +154,7 @@ class MyLogin extends StatelessWidget {
                 child: CustomButton().customButton200(context, 'Login'),
                 ),
 
-              SizedBox(height: 20),
+              SizedBox(height: 30),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -174,8 +175,16 @@ class MyLogin extends StatelessWidget {
                 ],
               ),
 
+              SizedBox(height: 20),
+
+              GestureDetector(
+                onTap: () => Get.to(() => PasswordActivity()),
+                child: Text('Forgot Password',style: TextStyle(color: Color(0xff3e1558),
+                    fontWeight: FontWeight.bold),),
+              ),
 
               SizedBox(height: 20),
+
             ],
           ),
         ),
