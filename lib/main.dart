@@ -21,7 +21,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  Get.put(DashboardController());
+  // Get.put(DashboardController());
   Get.put<ExamListController>(ExamListController());
   // Get.lazyPut(() => PurchasedExamController());
   Get.put<PaymentController>(PaymentController(),);

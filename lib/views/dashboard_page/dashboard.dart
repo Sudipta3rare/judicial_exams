@@ -18,7 +18,7 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   late BuildContext testContext;
 
-
+    DashboardController dashboardController = Get.put<DashboardController>( DashboardController());
   List<Widget> _buildScreens() {
     return [
       ExamList(),
