@@ -38,13 +38,23 @@ class Account extends StatelessWidget {
       body: SafeArea(
        child: ListView(
          children: [
-           Card(
-             child: Column(
-              children: [
-                Text('${acCtrl.accountDetail.name}'),
-                Text("Phone Number:")
-              ],
+           Container(
+             margin: EdgeInsets.all(10),
+             height: 150,
+              color: AppStyle().secondaryColor,
+             child: Card(
+               elevation: 10,
+               semanticContainer: true,
+               child: Column(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text('${acCtrl.accountDetail.name}', style:  AppStyle().sliderHeading,),
+                  Text("Phone Number : ${acCtrl.accountDetail.phone}", style: AppStyle().sliderPara,),
+                  Text("Email : ${acCtrl.accountDetail.email}",  style: AppStyle().sliderPara,),
+                ],
 
+               ),
              ),
            ),
 
