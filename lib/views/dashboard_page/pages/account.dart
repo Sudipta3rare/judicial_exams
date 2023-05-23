@@ -6,6 +6,7 @@ import 'package:judicial_exams/controller/dashboard_controller.dart';
 import 'package:judicial_exams/login.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
 import 'package:get/get.dart';
+import 'package:judicial_exams/views/exam_log_account/exam_log_page.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 
@@ -45,7 +46,34 @@ class Account extends StatelessWidget {
               ],
 
              ),
-           )
+           ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+            child: ListTile(
+              onTap: (){
+                    Get.to(ExamLogPage());
+              },
+              // splashColor: AppStyle().secondaryColor,
+              // tileColor: AppStyle().primaryColor,
+
+                 contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            shape: RoundedRectangleBorder(
+
+              side: BorderSide(width: 2,
+              color: AppStyle().secondaryColor),
+              borderRadius: BorderRadius.circular(10)),
+                 leading: Icon(Icons.library_add_check_outlined, color: AppStyle().button,),
+              title: Text("My Exam Log", style: GoogleFonts.montserrat(
+                fontWeight: FontWeight.bold,
+                color: AppStyle().button,
+              ),),
+              subtitle:  Text("Exam evaluation and completed exams", style: GoogleFonts.montserrat(
+                color: AppStyle().button
+              ),),
+               ),
+          ),
+
          ],
        ),
       ),

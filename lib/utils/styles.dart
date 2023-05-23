@@ -14,6 +14,7 @@ class AppStyle {
   );
 
   TextStyle sliderHeading =GoogleFonts.montserrat(fontSize: 30  , fontWeight: FontWeight.bold);
+
   TextStyle subheadingBlack =  GoogleFonts.montserrat(
       fontSize: 16,
       fontWeight: FontWeight.bold
