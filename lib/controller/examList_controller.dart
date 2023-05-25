@@ -64,6 +64,4 @@ class ExamListController extends GetxController{
         return false;
       }
     }
-
-
 }

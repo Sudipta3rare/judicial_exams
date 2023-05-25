@@ -1,21 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/account_controller.dart';
-import 'package:judicial_exams/controller/dashboard_controller.dart';
-import 'package:judicial_exams/login.dart';
-import 'package:judicial_exams/views/components/custom_button.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/views/exam_log_account/exam_log_page.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
-
 import '../../../utils/styles.dart';
+
+
 class Account extends StatelessWidget {
   Account({Key? key}) : super(key: key);
-
-
-
   AccountPageController acCtrl = Get.put(AccountPageController());
 
   @override
@@ -25,15 +17,49 @@ class Account extends StatelessWidget {
 
       appBar: AppBar(
         actions: [
-          IconButton(onPressed: (){
-            acCtrl.signOut();
-          }, icon: Icon(Icons.logout_outlined,
-          color: AppStyle().textHeading,))
+          IconButton(
+            onPressed: () {
+              showDialog<String>(
+                context: context,
+                builder: (BuildContext context) => AlertDialog(
+                  content:  Text('Do you want to exit?'),
+                  actions: <Widget>[
+                    TextButton(
+                      onPressed: () => Navigator.pop(context, 'Cancel'),
+                      child: const Text('Cancel',
+                        style: TextStyle(
+                          color: Color(0xff3e1558)
+                        ),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        acCtrl.signOut();
+                        Navigator.pop(context, 'OK');
+                      },
+                      child: const Text('OK',
+                        style: TextStyle(
+                            color: Color(0xff3e1558)
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+            icon: Icon(
+              Icons.logout_outlined,
+              color: AppStyle().textHeading,
+            ),
+          )
         ],
         backgroundColor: AppStyle().secondaryColor,
-        title: Text('Account', style: GoogleFonts.montserrat(
-          color: AppStyle().textHeading,
-        ),),
+        title: Text(
+          'Account',
+          style: GoogleFonts.montserrat(
+            color: AppStyle().textHeading,
+          ),
+        ),
       ),
       body: SafeArea(
        child: ListView(
@@ -66,10 +92,8 @@ class Account extends StatelessWidget {
               },
               // splashColor: AppStyle().secondaryColor,
               // tileColor: AppStyle().primaryColor,
-
                  contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             shape: RoundedRectangleBorder(
-
               side: BorderSide(width: 2,
               color: AppStyle().secondaryColor),
               borderRadius: BorderRadius.circular(10)),
@@ -83,10 +107,37 @@ class Account extends StatelessWidget {
               ),),
                ),
           ),
-
          ],
        ),
       ),
+    );
+  }
+}
+
+class DialogExample extends StatelessWidget {
+  const DialogExample({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () => showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          title: const Text('AlertDialog Title'),
+          content: const Text('AlertDialog description'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'Cancel'),
+              child: const Text('Cancel'),
+            ),
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      ),
+      child: const Text('Show Dialog'),
     );
   }
 }

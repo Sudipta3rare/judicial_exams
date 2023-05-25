@@ -13,23 +13,44 @@ class PasswordActivity extends StatelessWidget {
 
     if (email.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Enter your registered email id')),
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Color(0xffc89ce4),
+          content: Text('Enter your registered email id'),
+          duration: const Duration(seconds: 2),
+        ),
       );
       return;
     }
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Sending reset email...')),
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Color(0xffc89ce4),
+        content: Text('Sending reset email...'),
+        duration: const Duration(seconds: 2),
+      ),
     );
 
     try {
       await _auth.sendPasswordResetEmail(email: email);
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Instructions to reset your password sent!')),
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Color(0xffc89ce4),
+          content: Text('Instructions to reset your password sent!'),
+          duration: const Duration(seconds: 2),
+        ),
       );
+
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Failed to send reset email!')),
+        SnackBar(
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Color(0xffc89ce4),
+          content: Text('Failed to send reset email!'),
+          duration: const Duration(seconds: 2),
+        ),
       );
     }
   }
