@@ -232,11 +232,11 @@ class MyRegister extends StatelessWidget {
                         SnackBar(
                           behavior: SnackBarBehavior.floating,
                           backgroundColor: Color(0xffc89ce4),
-                          content: Text('Registration Successful'),
+                          content: Text('Registration Successful,Please Log in to Access Your Profile'),
                           duration: const Duration(seconds: 2),
                         ),
                       );
-                      Get.offAndToNamed("home");
+                      //Get.offAndToNamed("home");
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
                         print('The password provided is too weak.');
