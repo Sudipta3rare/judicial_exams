@@ -7,17 +7,18 @@ class AppStyle {
   Color textHeading = Colors.white;
   Color backgroundColor = Colors.purple.shade50;
 
-  TextStyle sliderPara = GoogleFonts.montserrat
-  (
-    fontSize: 16,
-
-  );
 
   TextStyle sliderHeading =GoogleFonts.montserrat(fontSize: 30  , fontWeight: FontWeight.bold);
 
   TextStyle subheadingBlack =  GoogleFonts.montserrat(
       fontSize: 16,
       fontWeight: FontWeight.bold
+  );
+
+  TextStyle subheadingNormal = GoogleFonts.montserrat
+    (
+    fontSize: 16,
+
   );
 
   TextStyle defaultText =  GoogleFonts.montserrat();

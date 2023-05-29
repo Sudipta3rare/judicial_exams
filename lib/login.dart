@@ -9,13 +9,14 @@ import 'package:judicial_exams/views/components/custom_button.dart';
 
 //   ->  "//" -Indicate Circular Progressbar  code
 
-
 class MyLogin extends StatefulWidget {
   MyLogin({Key? key}) : super(key: key);
+
 //
   @override
   _MyLoginState createState() => _MyLoginState();
 }
+
 //
 class _MyLoginState extends State<MyLogin> {
   String email = '';
@@ -56,7 +57,8 @@ class _MyLoginState extends State<MyLogin> {
                 decoration: const InputDecoration(
                   labelText: 'Email',
                   labelStyle: TextStyle(color: Color(0xff3e1558)),
-                  border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff3e1558)),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xff3e1558)),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Color(0xff3e1558)),
@@ -89,7 +91,8 @@ class _MyLoginState extends State<MyLogin> {
               SizedBox(height: 40),
               GestureDetector(
                 onTap: () async {
-                  if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(email)) {
+                  if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$')
+                      .hasMatch(email)) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         behavior: SnackBarBehavior.floating,
@@ -113,7 +116,9 @@ class _MyLoginState extends State<MyLogin> {
                     });
                     try {
                       await Firebase.initializeApp();
-                      UserCredential userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                      UserCredential userCredential = await FirebaseAuth
+                          .instance
+                          .signInWithEmailAndPassword(
                         email: email,
                         password: pass,
                       );
@@ -142,11 +147,14 @@ class _MyLoginState extends State<MyLogin> {
                           SnackBar(
                             behavior: SnackBarBehavior.floating,
                             backgroundColor: Color(0xffc89ce4),
-                            content: Text('Wrong password provided for that user.'),
+                            content:
+                                Text('Wrong password provided for that user.'),
                             duration: const Duration(seconds: 2),
                           ),
                         );
-                      }///
+                      }
+
+                      ///
                     } finally {
                       setState(() {
                         isLoading = false;
@@ -157,7 +165,8 @@ class _MyLoginState extends State<MyLogin> {
                 child: Visibility(
                   visible: !isLoading,
                   child: CustomButton().customButton200(context, 'Login'),
-                  replacement: CircularProgressIndicator(color: AppStyle().button),
+                  replacement:
+                      CircularProgressIndicator(color: AppStyle().button),
                 ),
               ),
               SizedBox(height: 30),
@@ -185,7 +194,8 @@ class _MyLoginState extends State<MyLogin> {
                 onTap: () => Get.to(() => PasswordActivity()),
                 child: Text(
                   'Forgot Password',
-                  style: TextStyle(color: Color(0xff3e1558), fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                      color: Color(0xff3e1558), fontWeight: FontWeight.bold),
                 ),
               ),
               SizedBox(height: 20),

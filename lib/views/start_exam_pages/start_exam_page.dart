@@ -115,7 +115,7 @@ class StartExamPage extends StatelessWidget {
                                 ),
                                 Text(
                                   "Start exam ${examDetials.examName} for ${examDetials.examDuration} hrs",
-                                  style: AppStyle().sliderPara,
+                                  style: AppStyle().subheadingNormal,
                                 ),
                                 SizedBox(
                                   height: 15,

@@ -11,7 +11,7 @@ class SliderComponent{
       padding: const EdgeInsets.all(16.0),
       child: Text('$title',
         textAlign: TextAlign.center,
-        style: AppStyle().sliderPara,
+        style: AppStyle().subheadingNormal,
       ),
     );
   }

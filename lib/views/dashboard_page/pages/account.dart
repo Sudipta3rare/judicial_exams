@@ -5,46 +5,34 @@ import 'package:get/get.dart';
 import 'package:judicial_exams/views/exam_log_account/exam_log_page.dart';
 import '../../../utils/styles.dart';
 
-
 class Account extends StatelessWidget {
   Account({Key? key}) : super(key: key);
   AccountPageController acCtrl = Get.put(AccountPageController());
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-      backgroundColor:AppStyle().backgroundColor,
-
+    return Scaffold(
+      backgroundColor: AppStyle().backgroundColor,
       appBar: AppBar(
         actions: [
           IconButton(
             onPressed: () {
-              showDialog<String>(
-                context: context,
-                builder: (BuildContext context) => AlertDialog(
-                  content:  Text('Do you want to exit?'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed: () => Navigator.pop(context, 'Cancel'),
-                      child: const Text('Cancel',
-                        style: TextStyle(
-                          color: Color(0xff3e1558)
-                        ),
-                      ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        acCtrl.signOut();
-                        Navigator.pop(context, 'OK');
-                      },
-                      child: const Text('OK',
-                        style: TextStyle(
-                            color: Color(0xff3e1558)
-                        ),
-                      ),
-                    ),
-                  ],
+              Get.defaultDialog(
+                title: 'Account',
+                titleStyle: AppStyle().subheadingBlack,
+                content: Text(
+                  'Do you want to exit?',
+                  style: AppStyle().subheadingNormal,
                 ),
+                textCancel: 'Cancel',
+                textConfirm: 'OK',
+                buttonColor: AppStyle().button,
+                cancelTextColor: AppStyle().primaryColor,
+                confirmTextColor: AppStyle().primaryColor,
+                onCancel: () {},
+                onConfirm: () {
+                  Navigator.pop(context, 'OK');
+                },
               );
             },
             icon: Icon(
@@ -62,82 +50,70 @@ class Account extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-       child: ListView(
-         children: [
-           Container(
-             margin: EdgeInsets.all(10),
-             height: 150,
+        child: ListView(
+          children: [
+            Container(
+              margin: EdgeInsets.all(10),
+              height: 150,
               color: AppStyle().secondaryColor,
-             child: Card(
-               elevation: 10,
-               semanticContainer: true,
-               child: Column(
-                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text('${acCtrl.accountDetail.name}', style:  AppStyle().sliderHeading,),
-                  Text("Phone Number : ${acCtrl.accountDetail.phone}", style: AppStyle().sliderPara,),
-                  Text("Email : ${acCtrl.accountDetail.email}",  style: AppStyle().sliderPara,),
-                ],
-
-               ),
-             ),
-           ),
-
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-            child: ListTile(
-              onTap: (){
-                    Get.to(ExamLogPage());
-              },
-              // splashColor: AppStyle().secondaryColor,
-              // tileColor: AppStyle().primaryColor,
-                 contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            shape: RoundedRectangleBorder(
-              side: BorderSide(width: 2,
-              color: AppStyle().secondaryColor),
-              borderRadius: BorderRadius.circular(10)),
-                 leading: Icon(Icons.library_add_check_outlined, color: AppStyle().button,),
-              title: Text("My Exam Log", style: GoogleFonts.montserrat(
-                fontWeight: FontWeight.bold,
-                color: AppStyle().button,
-              ),),
-              subtitle:  Text("Exam evaluation and completed exams", style: GoogleFonts.montserrat(
-                color: AppStyle().button
-              ),),
-               ),
-          ),
-         ],
-       ),
-      ),
-    );
-  }
-}
-
-class DialogExample extends StatelessWidget {
-  const DialogExample({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () => showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('AlertDialog Title'),
-          content: const Text('AlertDialog description'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Cancel'),
+              child: Card(
+                elevation: 10,
+                semanticContainer: true,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      '${acCtrl.accountDetail.name}',
+                      style: AppStyle().sliderHeading,
+                    ),
+                    Text(
+                      "Phone Number : ${acCtrl.accountDetail.phone}",
+                      style: AppStyle().subheadingNormal,
+                    ),
+                    Text(
+                      "Email : ${acCtrl.accountDetail.email}",
+                      style: AppStyle().subheadingNormal,
+                    ),
+                  ],
+                ),
+              ),
             ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'OK'),
-              child: const Text('OK'),
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
+              child: ListTile(
+                onTap: () {
+                  Get.to(ExamLogPage());
+                },
+                // splashColor: AppStyle().secondaryColor,
+                // tileColor: AppStyle().primaryColor,
+                contentPadding:
+                    EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                shape: RoundedRectangleBorder(
+                    side:
+                        BorderSide(width: 2, color: AppStyle().secondaryColor),
+                    borderRadius: BorderRadius.circular(10)),
+                leading: Icon(
+                  Icons.library_add_check_outlined,
+                  color: AppStyle().button,
+                ),
+                title: Text(
+                  "My Exam Log",
+                  style: GoogleFonts.montserrat(
+                    fontWeight: FontWeight.bold,
+                    color: AppStyle().button,
+                  ),
+                ),
+                subtitle: Text(
+                  "Exam evaluation and completed exams",
+                  style: GoogleFonts.montserrat(color: AppStyle().button),
+                ),
+              ),
             ),
           ],
         ),
       ),
-      child: const Text('Show Dialog'),
     );
   }
 }
