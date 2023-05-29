@@ -5,113 +5,126 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
 import 'package:get/get.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class MyRegister extends StatelessWidget {
-
   MyRegister({Key? key}) : super(key: key);
 
-  String email = '', pass = '',phone = '',confirmPassword ='',fullname = '';
+  String email = '', pass = '', phone = '', confirmPassword = '', fullname = '';
+
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+
+  void clearTextField() {
+    // Clear the text fields
+    fullNameController.clear();
+    emailController.clear();
+    phoneController.clear();
+    passwordController.clear();
+    confirmPasswordController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-     // backgroundColor: AppStyle().backgroundColor,
       body: SafeArea(
         child: Container(
           height: double.infinity,
-          padding: EdgeInsets.fromLTRB(32,50,32,0),
+          padding: EdgeInsets.fromLTRB(32, 50, 32, 0),
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage("assets/background.png"),
                 fit: BoxFit.cover,
-                opacity: 0.1
-            ),
+                opacity: 0.1),
           ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-
-                // Padding(
-                //   padding: const EdgeInsets.all(8.0),
-                //   child: SvgPicture.asset(
-                //
-                //       width: MediaQuery.of(context).size.width,
-                //       height:400,
-                //       "assets/signUp.svg"),
-                // ),
-
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text('Registration',style: GoogleFonts.montserrat(
-                    color: AppStyle().button,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold
-                  ),),
+                  child: Text(
+                    'Registration',
+                    style: GoogleFonts.montserrat(
+                        color: AppStyle().button,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
-
                 SizedBox(height: 20),
                 TextField(
+                  controller: fullNameController,
                   onChanged: (value) {
                     fullname = value;
                   },
-                  decoration:  InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Full Name',
-                    labelStyle: TextStyle(color:AppStyle().button),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: AppStyle().button),
+                    labelStyle: TextStyle(color: AppStyle().button),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: AppStyle().button),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: AppStyle().button), // Change focused border color to red
+                      borderSide: BorderSide(
+                          color: AppStyle()
+                              .button), // Change focused border color to red
                     ),
-                    fillColor: Colors.white,  // Set the background color to white
+                    fillColor: Colors.white,
+                    // Set the background color to white
                     filled: true,
                   ),
                 ),
-
                 SizedBox(height: 20),
-
                 TextField(
+                  controller: emailController,
                   onChanged: (value) {
                     email = value;
                   },
                   decoration: const InputDecoration(
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Color(0xff3e1558)),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff3e1558)),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xff3e1558)),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                      borderSide: BorderSide(
+                          color: Color(
+                              0xff3e1558)), // Change focused border color to red
                     ),
-                    fillColor: Colors.white,  // Set the background color to white
+                    fillColor: Colors.white,
+                    // Set the background color to white
                     filled: true,
                   ),
                 ),
-
                 SizedBox(height: 20),
-
                 TextField(
+                  controller: phoneController,
                   onChanged: (value) {
                     phone = value;
                   },
                   decoration: const InputDecoration(
                     labelText: 'Phone',
                     labelStyle: TextStyle(color: Color(0xff3e1558)),
-                    border: OutlineInputBorder(borderSide: BorderSide(color: Color(0xff3e1558)),
+                    border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xff3e1558)),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                      borderSide: BorderSide(
+                          color: Color(
+                              0xff3e1558)), // Change focused border color to red
                     ),
-                    fillColor: Colors.white,  // Set the background color to white
+                    fillColor: Colors.white,
+                    // Set the background color to white
                     filled: true,
                   ),
                 ),
-
                 SizedBox(height: 20),
-
                 TextField(
+                  controller: passwordController,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
@@ -120,23 +133,26 @@ class MyRegister extends StatelessWidget {
                   },
                   decoration: const InputDecoration(
                     labelText: 'Password',
-                    labelStyle: TextStyle(color: Color(0xff3e1558)), // Change label text color to red
+                    labelStyle: TextStyle(color: Color(0xff3e1558)),
+                    // Change label text color to red
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff3e1558)), // Change border color to red
+                      borderSide: BorderSide(
+                          color:
+                              Color(0xff3e1558)), // Change border color to red
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                      borderSide: BorderSide(
+                          color: Color(
+                              0xff3e1558)), // Change focused border color to red
                     ),
-                    fillColor: Colors.white,  // Set the background color to white
+                    fillColor: Colors.white,
+                    // Set the background color to white
                     filled: true,
                   ),
                 ),
-
-
                 SizedBox(height: 20),
-
-
                 TextField(
+                  controller: confirmPasswordController,
                   obscureText: true,
                   enableSuggestions: false,
                   autocorrect: false,
@@ -145,24 +161,26 @@ class MyRegister extends StatelessWidget {
                   },
                   decoration: const InputDecoration(
                     labelText: 'Confirm Password',
-                    labelStyle: TextStyle(color: Color(0xff3e1558)), // Change label text color to red
+                    labelStyle: TextStyle(color: Color(0xff3e1558)),
+                    // Change label text color to red
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff3e1558)), // Change border color to red
+                      borderSide: BorderSide(
+                          color:
+                              Color(0xff3e1558)), // Change border color to red
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff3e1558)), // Change focused border color to red
+                      borderSide: BorderSide(
+                          color: Color(
+                              0xff3e1558)), // Change focused border color to red
                     ),
-                    fillColor: Colors.white,  // Set the background color to white
+                    fillColor: Colors.white,
+                    // Set the background color to white
                     filled: true,
                   ),
                 ),
-
-
                 SizedBox(height: 40),
-
                 GestureDetector(
                   onTap: () async {
-
                     if (fullname.isEmpty) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
@@ -175,7 +193,8 @@ class MyRegister extends StatelessWidget {
                       return;
                     }
 
-                    if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(email)) {
+                    if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$')
+                        .hasMatch(email)) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           behavior: SnackBarBehavior.floating,
@@ -203,7 +222,8 @@ class MyRegister extends StatelessWidget {
                         SnackBar(
                           behavior: SnackBarBehavior.floating,
                           backgroundColor: Color(0xffc89ce4),
-                          content: Text('Password should be at least 6 characters long.'),
+                          content: Text(
+                              'Password should be at least 6 characters long.'),
                           duration: const Duration(seconds: 2),
                         ),
                       );
@@ -223,16 +243,33 @@ class MyRegister extends StatelessWidget {
                     }
 
                     try {
-                      await Firebase.initializeApp(); // Ensure Firebase is initialized
-                      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      await Firebase.initializeApp();
+                      // Ensure Firebase is initialized
+                      UserCredential userCredential = await FirebaseAuth
+                          .instance
+                          .createUserWithEmailAndPassword(
                         email: email,
                         password: pass,
                       );
+
+                      clearTextField();
+
+                      final userDocRef = FirebaseFirestore.instance
+                          .collection('users')
+                          .doc(userCredential.user!.uid);
+
+                      await userDocRef.set({
+                        'email': email,
+                        'phone': phone,
+                        'fullname': fullname,
+                      });
+
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           behavior: SnackBarBehavior.floating,
                           backgroundColor: Color(0xffc89ce4),
-                          content: Text('Registration Successful,Please Log in to Access Your Profile'),
+                          content: Text(
+                              'Registration Successful,Please Log in to Access Your Profile'),
                           duration: const Duration(seconds: 2),
                         ),
                       );
@@ -247,9 +284,9 @@ class MyRegister extends StatelessWidget {
                   },
                   child: CustomButton().customButton200(context, 'Sign Up'),
                 ),
-
-
-                SizedBox(height: 20,),
+                SizedBox(
+                  height: 20,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

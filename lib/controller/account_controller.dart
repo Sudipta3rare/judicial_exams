@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/models/account_model.dart';
-
 import 'dashboard_controller.dart';
 
 class AccountPageController extends GetxController{

@@ -2,12 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:judicial_exams/controller/account_controller.dart';
 import 'package:get/get.dart';
+import 'package:judicial_exams/login.dart';
 import 'package:judicial_exams/views/exam_log_account/exam_log_page.dart';
 import '../../../utils/styles.dart';
 
 class Account extends StatelessWidget {
   Account({Key? key}) : super(key: key);
   AccountPageController acCtrl = Get.put(AccountPageController());
+
+  void logout() {
+    // Perform logout functionality here
+    acCtrl.signOut();
+    // Navigate to the login page or any other desired page
+    Get.offAll(MyLogin());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +39,7 @@ class Account extends StatelessWidget {
                 confirmTextColor: AppStyle().primaryColor,
                 onCancel: () {},
                 onConfirm: () {
-                  Navigator.pop(context, 'OK');
+                  logout();
                 },
               );
             },
@@ -86,8 +94,6 @@ class Account extends StatelessWidget {
                 onTap: () {
                   Get.to(ExamLogPage());
                 },
-                // splashColor: AppStyle().secondaryColor,
-                // tileColor: AppStyle().primaryColor,
                 contentPadding:
                     EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 shape: RoundedRectangleBorder(
