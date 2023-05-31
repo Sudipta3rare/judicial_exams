@@ -91,18 +91,53 @@ class Account extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Text(
-                          'Full Name: $fullname',
-                          style: AppStyle().sliderHeading,
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Name:',
+                                style: AppStyle().subheadingNormal,
+                              ),
+                              Text(
+                                fullname,
+                                style: AppStyle().subheadingNormal,
+                              ),
+                            ],
+                          ),
+                        ), Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Email:',
+                                style: AppStyle().subheadingNormal,
+                              ),
+                              Text(
+                                email,
+                                style: AppStyle().subheadingNormal,
+                              ),
+                            ],
+                          ),
+                        ), Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Number:',
+                                style: AppStyle().subheadingNormal,
+                              ),
+                              Text(
+                                phone,
+                                style: AppStyle().subheadingNormal,
+                              ),
+                            ],
+                          ),
                         ),
-                        Text(
-                          'Phone Number: $phone',
-                          style: AppStyle().subheadingNormal,
-                        ),
-                        Text(
-                          'Email: $email',
-                          style: AppStyle().subheadingNormal,
-                        ),
+
                       ],
                     ),
                   ),
