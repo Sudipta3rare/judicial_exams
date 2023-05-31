@@ -10,12 +10,13 @@ import '../../../utils/styles.dart';
 
 class Account extends StatelessWidget {
   Account({Key? key}) : super(key: key);
-  final AccountPageController acCtrl = Get.put(AccountPageController());
+ final AccountPageController acCtrl = Get.put(AccountPageController());
 
   void logout() {
     acCtrl.signOut();
     Get.offAll(MyLogin());
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,7 @@ class Account extends StatelessWidget {
                 confirmTextColor: AppStyle().primaryColor,
                 onCancel: () {},
                 onConfirm: () {
-                  logout();
+                  //logout();
                 },
               );
             },
@@ -65,7 +66,10 @@ class Account extends StatelessWidget {
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator(backgroundColor: AppStyle().button,));
+              return Center(
+                  child: CircularProgressIndicator(
+                color: AppStyle().button,
+              ));
             }
             if (snapshot.hasError) {
               return Center(child: Text('Error occurred'));
@@ -74,6 +78,8 @@ class Account extends StatelessWidget {
               return Center(child: Text('No data available'));
             }
 
+            //****DONT NEED ACCOUNT_MODEL AND ACCOUNT_CONTROLLER FOR SHOWING FIRESTORE DATA IN TEXTVIEW******
+
             final data = snapshot.data!.data();
             final fullname = data?['fullname'] as String? ?? '';
             final phone = data?['phone'] as String? ?? '';
@@ -81,39 +87,28 @@ class Account extends StatelessWidget {
 
             return ListView(
               children: [
-                Container(
-                  margin: EdgeInsets.all(10),
-                  height: 150,
-                  color: AppStyle().secondaryColor,
+                SizedBox(
+                  height: 180,
                   child: Card(
+                    surfaceTintColor: AppStyle().secondaryColor,
+
+                    margin: EdgeInsets.all(15),
                     elevation: 10,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'Name:',
-                                style: AppStyle().subheadingNormal,
-                              ),
-                              Text(
-                                fullname,
-                                style: AppStyle().subheadingNormal,
-                              ),
-                            ],
-                          ),
+                        Text(
+                          fullname,
+                          style: AppStyle().subheadingBig,
                         ), Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 'Email:',
-                                style: AppStyle().subheadingNormal,
+                                 style: AppStyle().subheadingNormal,
                               ),
                               Text(
                                 email,
@@ -122,13 +117,13 @@ class Account extends StatelessWidget {
                             ],
                           ),
                         ), Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.symmetric(horizontal: 20.0),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 'Number:',
-                                style: AppStyle().subheadingNormal,
+                                 style: AppStyle().subheadingNormal,
                               ),
                               Text(
                                 phone,
@@ -144,8 +139,9 @@ class Account extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 10.0, vertical: 20),
+                      horizontal: 20.0, vertical: 20),
                   child: ListTile(
+                    tileColor: Colors.white,
                     onTap: () {
                       Get.to(ExamLogPage());
                     },
