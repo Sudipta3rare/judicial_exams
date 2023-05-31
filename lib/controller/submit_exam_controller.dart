@@ -4,12 +4,20 @@ import 'package:judicial_exams/controller/timer_controller.dart';
 import 'dart:io';
 
 import '../views/dashboard_page/dashboard.dart';
+import '../views/start_exam_pages/submit_exam_page.dart';
 class SubmitExamController extends GetxController{
   static SubmitExamController to = Get.find();
+
+
 
   TimerController tmCtrl = TimerController.to;
 
   final Rx<File?> selectedPdf = Rx<File?>(null);
+
+
+  void onInit(){
+    startSubmitTimer();
+  }
 
 
   void selectAndDisplayPdf() async {
@@ -25,13 +33,19 @@ class SubmitExamController extends GetxController{
   }
 
   void startSubmitTimer(){
-    tmCtrl.startTimer(15*60);
+    tmCtrl.startTimer(15, (){
+      onSubmitFile();
+    });
+    // tmCtrl.startTimer(15*60);
   }
 
+
+void onClose(){
+    print("On close active");
+    tmCtrl.onClose();
+}
+
   void onSubmitFile(){
-
-
       Get.offAll(() =>DashboardPage());
-
   }
 }

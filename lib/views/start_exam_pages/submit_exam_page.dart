@@ -29,10 +29,6 @@ class SubmitExamPage extends StatelessWidget {
     return SafeArea(
       child: GetBuilder<SubmitExamController>(
           builder: (ctrl) {
-            ctrl.tmCtrl.onFinish = (){
-              Get.offAll(DashboardPage());
-            };
-            ctrl.startSubmitTimer();
             return SingleChildScrollView(
               child: Column(
                 children: [
@@ -42,7 +38,7 @@ class SubmitExamPage extends StatelessWidget {
                   ),
                   Obx(
                           ()=>Center(
-                        child: Text('${ctrl.tmCtrl.time.value}', style: GoogleFonts.montserrat(
+                        child: Text(ctrl.tmCtrl.time.value, style: GoogleFonts.montserrat(
                             fontSize: 30,
                             color: AppStyle().button,
                             fontWeight: FontWeight.bold
@@ -87,6 +83,7 @@ class SubmitExamPage extends StatelessWidget {
 
           GestureDetector(
               onTap: (){
+                ctrl.tmCtrl.onClose();
                 ctrl.onSubmitFile();
               },
               child: CustomButton().customButton200(context, "Submit"))

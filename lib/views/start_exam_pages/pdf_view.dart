@@ -43,9 +43,7 @@ class PdfViewPage extends StatelessWidget {
       body: Container(
         child: GetBuilder<TimerController>(
           builder: (ctrl) {
-            ctrl.onFinish =(){
-              Get.offAll(SubmitExamPage());
-            };
+
             return Stack(
                   children: [
                     Padding(

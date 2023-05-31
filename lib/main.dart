@@ -15,6 +15,7 @@ import 'package:judicial_exams/views/dashboard_page/pages/ongoing_exams.dart';
 import 'package:judicial_exams/views/payment/payment_page.dart';
 import 'package:judicial_exams/views/slider_pages/Slider1.dart';
 import 'package:judicial_exams/views/start_exam_pages/submit_exam_page.dart';
+import 'controller/purchasedExam_controller.dart';
 import 'login.dart';
 
 void main() async {
@@ -23,12 +24,15 @@ void main() async {
 
   // Get.put(DashboardController());
   Get.put<ExamListController>(ExamListController());
-  // Get.lazyPut(() => PurchasedExamController());
-  Get.put<PaymentController>(PaymentController(),);
-  Get.put<StartExamController>(StartExamController(),);
+  Get.lazyPut(() => PurchasedExamController(), fenix: true);
+  Get.lazyPut(() => PaymentController(), fenix: true);
+  Get.lazyPut(() => StartExamController(), fenix: true);
+  // Get.put<PaymentController>(PaymentController(),);
+  // Get.put<StartExamController>(StartExamController(),);
   // Get.lazyPut<TimerController>(() => TimerController(), fenix: true);
+  Get.lazyPut<SubmitExamController>(() => SubmitExamController(), fenix: true);
   Get.put(TimerController());
-  Get.put(SubmitExamController());
+  // Get.put(SubmitExamController());
   runApp(const MyApp());
 }
 
