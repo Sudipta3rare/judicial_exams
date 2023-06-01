@@ -85,7 +85,7 @@ class SubmitExamPage extends StatelessWidget {
                 GestureDetector(
                     onTap: () {
                       ctrl.tmCtrl.onClose();
-                      ctrl.onSubmitFile();
+                      ctrl.onSubmitFile(context);
                     },
                     child: CustomButton().customButton200(context, "Submit"))
               ],

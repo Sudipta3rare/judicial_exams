@@ -1,9 +1,11 @@
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/controller/timer_controller.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
+import '../views/dashboard_page/dashboard.dart';
 
 class SubmitExamController extends GetxController {
   static SubmitExamController to = Get.find();
@@ -39,7 +41,9 @@ class SubmitExamController extends GetxController {
     tmCtrl.onClose();
   }
 
-  Future<void> onSubmitFile() async {
+  Future<void> onSubmitFile(BuildContext context) async {
+
+
     if (selectedPdf.value != null) {
       File file = selectedPdf.value!;
       String? userId = firebase_auth.FirebaseAuth.instance.currentUser?.uid;
@@ -66,5 +70,17 @@ class SubmitExamController extends GetxController {
     } else {
       print("No selected PDF file.");
     }
+
+    Get.offAll(() =>DashboardPage());
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        behavior: SnackBarBehavior.floating,
+        backgroundColor: Color(0xffc89ce4),
+        content: Text('Sucess! Your files have been sumited'),
+        duration: const Duration(seconds: 2),
+      ),
+    );
+
   }
 }
