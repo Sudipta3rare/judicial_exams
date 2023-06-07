@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:judicial_exams/password_reset.dart';
 import 'package:judicial_exams/utils/styles.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
+import 'package:judicial_exams/views/user_registration/password_reset.dart';
 
 //   ->  "//" -Indicate Circular Progressbar  code
 

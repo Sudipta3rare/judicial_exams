@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:judicial_exams/controller/account_controller.dart';
-import 'package:judicial_exams/login.dart';
+import 'package:judicial_exams/views/user_registration/login.dart';
 import 'package:judicial_exams/views/exam_log_account/exam_log_page.dart';
 import '../../../utils/styles.dart';
 
@@ -14,7 +14,7 @@ class Account extends StatelessWidget {
 
   void logout() {
     acCtrl.signOut();
-    Get.offAll(MyLogin());
+    Get.offAll(() => MyLogin());
   }
 
 
@@ -40,7 +40,7 @@ class Account extends StatelessWidget {
                 confirmTextColor: AppStyle().primaryColor,
                 onCancel: () {},
                 onConfirm: () {
-                  //logout();
+                  logout();
                 },
               );
             },
