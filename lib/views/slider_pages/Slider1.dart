@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:judicial_exams/login.dart';
+import 'package:judicial_exams/views/user_registration/login.dart';
 import 'package:judicial_exams/views/components/custom_button.dart';
 import '../../utils/styles.dart';
 
